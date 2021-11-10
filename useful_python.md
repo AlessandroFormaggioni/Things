@@ -14,6 +14,7 @@ with Entrez.efetch(db="nucleotide", rettype="gb", retmode="text", id="NC_017612"
 
 ## How to extract a sub_alignment of sites from a file sites.txt
 `for a in `grep "BIN" partition_file | awk -F "=" '{print$2}' | sed ':a;N;$!ba;s/\n//g' | sed 's/,//g'`; do seq $(echo $a | awk -F "-" '{print$1}') $(echo $a | awk -F "-" '{print$2}') ; done > sites.txt`
+for a in `awk -F "-" '{print$1}' file_esclusi`; do sed -i "s/^$a$//g" sites.txt ; sed -i '/^$/d' sites.txt ; done
 
 ```
 import Bio
