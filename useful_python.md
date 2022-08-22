@@ -40,6 +40,13 @@ for a in range(0,len(align)):
 AlignIO.write(align2,"mito_gapped.phy","phylip")
 ```
 
+#NCBITaxonomy
 
+```
+>>> for a in range(0,len(seq)):
+...     if NCBITaxa().get_name_translator([seq[a].id.split("_")[0]]) :
+...             if 1224 not in NCBITaxa().get_lineage(list(NCBITaxa().get_name_translator([seq[a].id.split("_")[0]]).values())[0][0]):
+...                     print(seq[a].id)
+```
 
-          
+    
